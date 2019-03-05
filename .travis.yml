@@ -1,11 +1,11 @@
 language: cpp
 compiler:
-    -gcc
+    - gcc
    
  instal: 
-    git clone https://github.com/R2D2-2019/R2D2-build
-    cd R2D2-build/modules
-    git clone https://github.com/R2D2-2019/test_module
+    - git clone https://github.com/R2D2-2019/R2D2-build
+    - cd R2D2-build/modules
+    - git clone https://github.com/R2D2-2019/test_module
     
  script:
-    ls
+    - ls
