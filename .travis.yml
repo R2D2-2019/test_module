@@ -31,7 +31,7 @@ before_script:
 install:
     - cd ..
     - git clone https://github.com/R2D2-2019/R2D2-build.git 
-    - sudo unlink /usr/bin/gcc && sudo ln -s /usr/bin/gcc-7 /usr/bin/gcc # Change symlinks of gcc to gcc-5
+    - sudo unlink /usr/bin/gcc && sudo ln -s /usr/bin/gcc-7 /usr/bin/gcc # Change symlinks of gcc to gcc-7
     - sudo unlink /usr/bin/g++ && sudo ln -s /usr/bin/g++-7 /usr/bin/g++
     
 script:
@@ -41,7 +41,7 @@ script:
     - echo $TRAVIS_BUILD_DIR
     - cp -r $TRAVIS_BUILD_DIR $PWD/test_module
     - ls
-    - cd test_module/test
+    - cd test_module/code
     - ls
     - make build 
     - make clean
