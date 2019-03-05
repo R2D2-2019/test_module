@@ -40,6 +40,6 @@ script:
     - arm-none-eabi-g++ -v
     - cd R2D2-build/modules
     - cp -r $TRAVIS_BUILD_DIR $PWD/test_module
-    - cd test_module/code
+    - cd test_module/test
     - make build 
     - make clean
