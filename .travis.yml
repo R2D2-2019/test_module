@@ -1,7 +1,7 @@
 language: cpp
 
 compiler:
-    - arm-none-eabi-gcc
+    - gcc
 
 addons:
     apt_packages:
@@ -19,5 +19,6 @@ install:
 
 script:
     - cd test
+    - ls
     - make build 
     - make clean
