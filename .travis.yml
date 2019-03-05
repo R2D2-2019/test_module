@@ -1,12 +1,23 @@
-language:cpp
+language: cpp
 
 compiler:
-    - gcc
-   
- install: 
-    - git clone https://github.com/R2D2-2019/R2D2-build
-    - cd R2D2-build/modules
-    - git clone https://github.com/R2D2-2019/test_module
-    
- script:
-    - ls
+    - arm-none-eabi-gcc
+
+addons:
+    apt_packages:
+        - lib32bz2-1.0
+        - lib32ncurses5
+        - lib32z1
+
+before_script:
+    - wget https://developer.arm.com/-/media/Files/downloads/gnu-rm/8-2018q4/gcc-arm-none-eabi-8-2018-q4-major-linux.tar.bz2? -O /tmp/gcc-arm-none-eabi.tar.bz2
+    - tar -xvjf /tmp/gcc-arm-none-eabi.tar.bz2
+    - export PATH=$PATH:$PWD/gcc-arm-none-eabi-5_4-2016q3/bin/ 
+
+install:
+    - git clone https://github.com/R2D2-2019/R2D2-build.git 
+
+script:
+    - cd test
+    - make build 
+    - make clean
