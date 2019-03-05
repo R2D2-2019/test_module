@@ -45,4 +45,5 @@ script:
     - cp -r $TRAVIS_BUILD_DIR $PWD/test_module
     - cd test_module/test
     - make build 
+    - make run
     - make clean
