@@ -27,6 +27,9 @@ before_script:
     - wget https://developer.arm.com/-/media/Files/downloads/gnu-rm/8-2018q4/gcc-arm-none-eabi-8-2018-q4-major-linux.tar.bz2? -O /tmp/gcc-arm-none-eabi.tar.bz2
     - tar -xvjf /tmp/gcc-arm-none-eabi.tar.bz2
     - export PATH=$PATH:$PWD/gcc-arm-none-eabi-8-2018-q4-major/bin/ 
+    - g++ -v
+    - gcc -v
+    - arm-none-eabi-g++ -v
 
 install:
     - cd ..
@@ -37,13 +40,22 @@ install:
     - sudo cp -r /usr/bin/gcc /bin/gcc
     - sudo cp -r /usr/bin/g++ /bin/g++
     
-script:
-    - g++ -v
-    - gcc -v
-    - arm-none-eabi-g++ -v
-    - cd R2D2-build/modules
-    - cp -r $TRAVIS_BUILD_DIR $PWD/test_module
-    - cd test_module/test
-    - make build 
-    - make run
-    - make clean
+    
+jobs:
+    include:
+        -stage: test
+        script:
+            - cd R2D2-build/modules
+            - cp -r $TRAVIS_BUILD_DIR $PWD/test_module
+            - cd test_module/test
+            - make build 
+            - make run
+            - make clean
+        script:
+            - cd R2D2-build/modules
+            - cp -r $TRAVIS_BUILD_DIR $PWD/test_module
+            - cd test_module/code
+            - make build 
+            - make run
+            - make clean
+        
