@@ -5,9 +5,6 @@ branches:
         - master
         - release
 
-compiler:
-    - gcc
-
 addons:
     apt_packages:
         - lib32bz2-1.0
@@ -33,7 +30,6 @@ install:
     - git clone https://github.com/R2D2-2019/R2D2-build.git 
     - sudo unlink /usr/bin/gcc && sudo ln -s /usr/bin/gcc-7 /usr/bin/gcc # Change symlinks of gcc to gcc-7
     - sudo unlink /usr/bin/g++ && sudo ln -s /usr/bin/g++-7 /usr/bin/g++
-    - export PATH=$PATH:/usr/bin/g++
     
 script:
     - g++ -v
