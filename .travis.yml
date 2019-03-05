@@ -13,6 +13,13 @@ addons:
         - lib32bz2-1.0
         - lib32ncurses5
         - lib32z1 
+    apt:
+        sources:
+            - ubuntu-toolchain-r-test_module
+        packages:
+            - g++-7
+env:
+    - MATRIX_EVAL = "CC=gcc-7 && CXX=g++-7"
         
 
 before_script:
@@ -25,10 +32,11 @@ install:
     - git clone https://github.com/R2D2-2019/R2D2-build.git 
     
 script:
+    - g++ -v
     - arm-none-eabi-g++ -v
     - cd R2D2-build/modules
-    - echo TRAVIS_BUILD_DIR
-    - cp -r TRAVIS_BUILD_DIR $PWD/test_module
+    - echo $TRAVIS_BUILD_DIR
+    - cp -r $TRAVIS_BUILD_DIR $PWD/test_module
     - ls
     - cd test_module/test
     - ls
