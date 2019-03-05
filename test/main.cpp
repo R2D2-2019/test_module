@@ -29,7 +29,7 @@ TEST_CASE("Constructor, two_parameters") {
 }
 
 TEST_CASE("Add two vectors") {
-  vector v(4, 4);
+  vector v(4, 3);
   vector x = v + vector(5, 4);
   REQUIRE(x == vector(9, 8));
 }
