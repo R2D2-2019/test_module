@@ -21,12 +21,14 @@ before_script:
     - export PATH=$PATH:$PWD/gcc-arm-none-eabi-8-2018-q4-major/bin/ 
 
 install:
+    - cd ..
     - git clone https://github.com/R2D2-2019/R2D2-build.git 
     
 script:
     - arm-none-eabi-g++ -v
     - cd R2D2-build/modules
-    - copy -r TRAVIS_BUILD_DIR $PWD/test_module
+    - echo TRAVIS_BUILD_DIR
+    - cp -r TRAVIS_BUILD_DIR $PWD/test_module
     - ls
     - cd test_module/test
     - ls
