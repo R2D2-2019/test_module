@@ -9,6 +9,7 @@ compiler:
     - gcc
 
 addons:
+    - os: linux
     apt_packages:
         - lib32bz2-1.0
         - lib32ncurses5
@@ -21,6 +22,10 @@ addons:
 env:
     - MATRIX_EVAL = "CC=gcc-7 && CXX=g++-7"
         
+        
+        
+before_install:
+    - eval "${MATRIX_EVAL}"
 
 before_script:
     - wget https://developer.arm.com/-/media/Files/downloads/gnu-rm/8-2018q4/gcc-arm-none-eabi-8-2018-q4-major-linux.tar.bz2? -O /tmp/gcc-arm-none-eabi.tar.bz2
