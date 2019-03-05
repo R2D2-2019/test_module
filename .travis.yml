@@ -30,9 +30,11 @@ install:
     - git clone https://github.com/R2D2-2019/R2D2-build.git 
     - sudo unlink /usr/bin/gcc && sudo ln -s /usr/bin/gcc-7 /usr/bin/gcc # Change symlinks of gcc to gcc-7
     - sudo unlink /usr/bin/g++ && sudo ln -s /usr/bin/g++-7 /usr/bin/g++
+    - export PATH=$PATH:/usr/bin/g++:/usr/bin/gcc
     
 script:
     - g++ -v
+    - gcc -v
     - arm-none-eabi-g++ -v
     - cd R2D2-build/modules
     - cp -r $TRAVIS_BUILD_DIR $PWD/test_module
