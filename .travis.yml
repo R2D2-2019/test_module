@@ -1,5 +1,10 @@
 language: cpp
 
+branches:
+    only:
+        - master
+        - release
+
 compiler:
     - gcc
 
@@ -19,6 +24,8 @@ install:
 
 script:
     - arm-none-eabi-g++ -v
+    - cd R2D2-build/modules
+    - git clone https://github.com/R2D2-2019/test_module.git
     - ls
     - cd test
     - ls
