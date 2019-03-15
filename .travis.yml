@@ -26,9 +26,9 @@ addons:
 before_script:
     - wget  https://sourceforge.net/projects/raspberry-pi-cross-compilers/files/Raspberry%20Pi%20GCC%20Cross-Compilers/GCC%208.3.0/Raspberry%20Pi%202%2C%203/cross-gcc-8.3.0-pi_2-3.tar.gz/download
     - tar xf download
-    - sudo mv cross-pi-gcc-8.3.0-1 /bin
-    - echo 'export PATH=/bin/cross-pi-gcc-8.3.0-1/bin:$PATH' >> .profile  
-    - echo 'export LD_LIBRARY_PATH=/bin/cross-pi-gcc-8.3.0-1/lib:$LD_LIBRARY_PATH' >> .profile
+    - sudo mv cross-pi-gcc-8.3.0-1 /opt
+    - echo 'export PATH=/bin/cross-pi-gcc-8.3.0-1/opt:$PATH' >> .profile  
+    - echo 'export LD_LIBRARY_PATH=/opt/cross-pi-gcc-8.3.0-1/lib:$LD_LIBRARY_PATH' >> .profile
     - source .profile
     - arm-linux-gnueabihf-g++ -v
     - g++ -v
