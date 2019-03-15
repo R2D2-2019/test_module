@@ -4,4 +4,11 @@
 *.c
 *.map
 *.ld
-
+*.cbp
+*.lss
+*.exe
+*.lst
+*.exe
+.idea/
+cmake*/
+settings.json
