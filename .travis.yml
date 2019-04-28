@@ -52,8 +52,6 @@ install:
 jobs:
   include:
     - script:
-      env: RUNNING="Tests"
-      
       # copy the currently building repo into a build_module
       - cp -r $TRAVIS_BUILD_DIR $HOME/r2d2/modules/build_module
 
