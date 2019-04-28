@@ -30,7 +30,7 @@ cache:
 
 install:
   # clone git repo to the $HOME folder
-  - git clone --recursive -j8  https://github.com/R2D2-2019/R2D2-build.git $HOME/r2d2
+  - git clone --branch travis-ci --recursive -j8  https://github.com/R2D2-2019/R2D2-build.git $HOME/r2d2
   
   # make installer executable
   - chmod +x $HOME/r2d2/programs/travis-ci/install_arm-eabi-gcc.sh
