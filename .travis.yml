@@ -24,9 +24,13 @@ addons:
       - g++-7
 
 cache:
+  # cache the files for 3 hours
+  timeout: 10800
+
   directories:
     # cache the arm-pi location
     - $HOME/arm-pi
+    - $HOME/r2d2/library
 
 install:
   # clone git repo to the $HOME folder
@@ -43,7 +47,8 @@ install:
   - export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/arm-pi/lib
 
   # make a link to /opt
-  - sudo ln -s $HOME/arm-pi /opt/cross-pi-gcc-8.3.0-1/
+  - sudo mkdir -p /opt/cross-pi-gcc-8.3.0-1
+  - sudo ln -s $HOME/arm-pi /opt/cross-pi-gcc-8.3.0-1
 
   # Change symlinks of gcc to gcc-7
   - sudo unlink /usr/bin/gcc && sudo ln -s /usr/bin/gcc-7 /usr/bin/gcc 
