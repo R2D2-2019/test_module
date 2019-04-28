@@ -64,8 +64,6 @@ jobs:
       - make clean
 
     - script:
-      env: RUNNING="Arduino Code"
-
       # copy the currently building repo into a build_module
       - cp -r $TRAVIS_BUILD_DIR $HOME/r2d2/modules/build_module
 
