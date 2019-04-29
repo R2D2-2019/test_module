@@ -43,10 +43,10 @@ install:
 
   # make a link to /opt
   - sudo mkdir -p /opt/cross-pi-gcc-8.3.0-1
-  - sudo ln $HOME/arm-pi /opt/cross-pi-gcc-8.3.0-1
+  - sudo cp -a $HOME/arm-pi /opt/cross-pi-gcc-8.3.0-1
 
   # add arm-pi to path and libary
-  - export PATH=$PATH:$HOME/arm-pi/bin/ 
+  - export PATH=$PATH:/opt/cross-pi-gcc-8.3.0-1/bin/ 
   - export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/cross-pi-gcc-8.3.0-1/lib
 
   # Change symlinks of gcc to gcc-7
