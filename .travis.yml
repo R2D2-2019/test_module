@@ -43,7 +43,7 @@ install:
 
   # make a link to /opt
   - sudo mkdir -p /opt/cross-pi-gcc-8.3.0-1
-  - sudo cp -a $HOME/arm-pi /opt/cross-pi-gcc-8.3.0-1
+  - sudo cp -a $HOME/arm-pi/* /opt/cross-pi-gcc-8.3.0-1
 
   # add arm-pi to path and libary
   - export PATH=$PATH:/opt/cross-pi-gcc-8.3.0-1/bin
