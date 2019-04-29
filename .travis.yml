@@ -33,7 +33,7 @@ cache:
 
 install:
   # clone git repo to the $HOME folder
-  - git clone --branch travis-ci --recursive --shallow-since=2019-04-01 -j8  https://github.com/R2D2-2019/R2D2-build.git $HOME/r2d2
+  - git clone --branch travis-ci --recursive -j8  https://github.com/R2D2-2019/R2D2-build.git $HOME/r2d2
   
   # make installer executable
   - chmod +x $HOME/r2d2/programs/travis-ci/install_arm-pi-gcc.sh
@@ -42,7 +42,7 @@ install:
   - $HOME/r2d2/programs/travis-ci/install_arm-pi-gcc.sh
 
   # make a link to /opt
-  - sudo ln -s $HOME/arm-pi/* /opt/cross-pi-gcc-8.3.0-1
+  - sudo ln -s $HOME/arm-pi /opt/cross-pi-gcc-8.3.0-1
 
   # add arm-pi to path and libary
   - export PATH=$PATH:/opt/cross-pi-gcc-8.3.0-1/bin
