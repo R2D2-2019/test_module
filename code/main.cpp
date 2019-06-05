@@ -1,8 +1,7 @@
-#include <iostream>
 #include <hwlib.hpp>
 
 int main(void) {
-    std::cout << "Arduino blink\n";
+    hwlib::cout << "Arduino blink\n";
 
     auto led = hwlib::target::pin_out(hwlib::target::pins::d40);
 
