@@ -18,6 +18,12 @@ cache:
     # cache the arm-none-eabi location
     - $HOME/arm-none-eabi
 
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+      - llvm-toolchain-precise 
+
 install:
   # clone git repo to the $HOME folder
   - git clone --recursive -j8  https://github.com/R2D2-2019/R2D2-build.git $HOME/r2d2
@@ -27,10 +33,9 @@ jobs:
     - stage: Native-tests
       script:
         # install gcc/g++-7
-        - sudo add-apt-repository ppa:ubuntu-toolchain-r/test
         - sudo apt update
         - sudo apt install g++-7 -y
-        
+
         # Change symlinks of gcc to gcc-7
         - sudo unlink /usr/bin/gcc && sudo ln -s /usr/bin/gcc-7 /usr/bin/gcc 
         - sudo unlink /usr/bin/g++ && sudo ln -s /usr/bin/g++-7 /usr/bin/g++  
