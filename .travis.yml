@@ -57,7 +57,7 @@ jobs:
       script:
         # install gcc/g++-7
         - sudo apt -qq update
-        - sudo apt -qq -y install g++-7 
+        - sudo apt -q install g++-7 -y
 
         # Change symlinks of gcc to gcc-7
         - sudo unlink /usr/bin/gcc && sudo ln -s /usr/bin/gcc-7 /usr/bin/gcc 
