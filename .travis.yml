@@ -55,7 +55,7 @@ install:
 jobs:
   include:
     - stage: Native-tests
-    - script:
+    script:
       # copy the currently building repo into a build_module
       - cp -r $TRAVIS_BUILD_DIR $HOME/r2d2/modules/build_module
 
@@ -68,7 +68,7 @@ jobs:
       - make clean
 
     - stage: Arduino-build
-    - script:
+    script:
       # copy the currently building repo into a build_module
       - cp -r $TRAVIS_BUILD_DIR $HOME/r2d2/modules/build_module
 
