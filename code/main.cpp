@@ -2,8 +2,7 @@
 #include <hwlib.hpp>
 
 int main(void) {
-    hwlib::target::init();  
-    std::cout << "Raspberry Pi blink\n";
+    std::cout << "Arduino blink\n";
 
     auto led = hwlib::target::pin_out(hwlib::target::pins::d40);
 

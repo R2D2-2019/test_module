@@ -28,27 +28,21 @@ cache:
   timeout: 10800
 
   directories:
-    # cache the arm-pi location
-    - $HOME/arm-pi
+    # cache the arm-none-eabi location
+    - $HOME/arm-none-eabi
 
 install:
   # clone git repo to the $HOME folder
-  - git clone --branch travis-ci --recursive -j8  https://github.com/R2D2-2019/R2D2-build.git $HOME/r2d2
+  - git clone --recursive -j8  https://github.com/R2D2-2019/R2D2-build.git $HOME/r2d2
   
   # make installer executable
-  - chmod +x $HOME/r2d2/programs/travis-ci/install_arm-pi-gcc.sh
+  - chmod +x $HOME/r2d2/programs/travis-ci/install_arm-eabi-gcc.sh
 
   # run installer
-  - $HOME/r2d2/programs/travis-ci/install_arm-pi-gcc.sh
+  - $HOME/r2d2/programs/travis-ci/install_arm-eabi-gcc.sh
 
-  # make a link to /opt
-  - sudo ln -s $HOME/arm-pi /opt/cross-pi-gcc-8.3.0-1
-
-  # add arm-pi to path and libary
-  - export PATH=$PATH:/opt/cross-pi-gcc-8.3.0-1/bin
-  - export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/cross-pi-gcc-8.3.0-1/lib
-
-  - ls /opt/cross-pi-gcc-8.3.0-1/
+  # add arm-eabi-gcc to path
+  - export PATH=$PATH:$HOME/arm-none-eabi/bin/ 
 
   # Change symlinks of gcc to gcc-7
   - sudo unlink /usr/bin/gcc && sudo ln -s /usr/bin/gcc-7 /usr/bin/gcc 
@@ -60,6 +54,7 @@ install:
 
 jobs:
   include:
+    - stage: Native-tests
     - script:
       # copy the currently building repo into a build_module
       - cp -r $TRAVIS_BUILD_DIR $HOME/r2d2/modules/build_module
