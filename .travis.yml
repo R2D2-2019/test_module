@@ -32,7 +32,8 @@ install:
 
 jobs:
   include:
-    - stage: Arduino-build
+    - stage: Tests
+      name: "Arduino build"
       script:
         # make installer executable
         - chmod +x $HOME/r2d2/programs/travis-ci/install_arm-eabi-gcc.sh
@@ -53,7 +54,7 @@ jobs:
         - make build
         - make clean
 
-    - stage: Native-tests
+      name: "Native tests"
       script:
         # install gcc/g++-7
         - sudo apt -qq update
