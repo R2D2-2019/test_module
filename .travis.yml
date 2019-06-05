@@ -33,8 +33,8 @@ jobs:
     - stage: Native-tests
       script:
         # install gcc/g++-7
-        - sudo apt update
-        - sudo apt install g++-7 -y
+        - sudo apt update -q
+        - sudo apt install g++-7 -y -q
 
         # Change symlinks of gcc to gcc-7
         - sudo unlink /usr/bin/gcc && sudo ln -s /usr/bin/gcc-7 /usr/bin/gcc 
