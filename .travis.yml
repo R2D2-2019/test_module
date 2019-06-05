@@ -33,7 +33,6 @@ install:
 jobs:
   include:
     - stage: Tests
-      name: "Arduino build"
       script:
         # make installer executable
         - chmod +x $HOME/r2d2/programs/travis-ci/install_arm-eabi-gcc.sh
@@ -53,28 +52,29 @@ jobs:
         # build the module
         - make build
         - make clean
+      name: "Arduino build"
 
+    - script:
+      # install gcc/g++-7
+      - sudo apt -qq update
+      - sudo apt -q install g++-7 -y
+
+      # Change symlinks of gcc to gcc-7
+      - sudo unlink /usr/bin/gcc && sudo ln -s /usr/bin/gcc-7 /usr/bin/gcc 
+      - sudo unlink /usr/bin/g++ && sudo ln -s /usr/bin/g++-7 /usr/bin/g++  
+
+      # link to /bin/ location
+      - sudo ln -s /usr/bin/gcc /bin/gcc
+      - sudo ln -s /usr/bin/g++ /bin/g++  
+
+      # copy the currently building repo into a build_module
+      - cp -r $TRAVIS_BUILD_DIR $HOME/r2d2/modules/build_module
+
+      # go into the modules folder of the build system
+      - cd $HOME/r2d2/modules/build_module/test
+
+      # build the module
+      - make build 
+      - make run
+      - make clean        
       name: "Native tests"
-      script:
-        # install gcc/g++-7
-        - sudo apt -qq update
-        - sudo apt -q install g++-7 -y
-
-        # Change symlinks of gcc to gcc-7
-        - sudo unlink /usr/bin/gcc && sudo ln -s /usr/bin/gcc-7 /usr/bin/gcc 
-        - sudo unlink /usr/bin/g++ && sudo ln -s /usr/bin/g++-7 /usr/bin/g++  
-
-        # link to /bin/ location
-        - sudo ln -s /usr/bin/gcc /bin/gcc
-        - sudo ln -s /usr/bin/g++ /bin/g++  
-
-        # copy the currently building repo into a build_module
-        - cp -r $TRAVIS_BUILD_DIR $HOME/r2d2/modules/build_module
-
-        # go into the modules folder of the build system
-        - cd $HOME/r2d2/modules/build_module/test
-
-        # build the module
-        - make build 
-        - make run
-        - make clean        
