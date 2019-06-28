@@ -28,10 +28,9 @@ install:
   # clone git repo to the $HOME folder
   - git clone https://github.com/R2D2-2019/R2D2-build.git $HOME/r2d2 --depth=10
 
-  - declare -a arr=("test_module" "moving_platform")
-
-  - ## now loop through the above array
-  - for i in "${arr[@]}";
+  # download the needed modules
+  - declare -a arr=("test_module" "moving_platform");
+    for i in "${arr[@]}";
     do
       echo "Downloading module $i";
       git clone https://github.com/R2D2-2019/$i.git $HOME/r2d2/modules/$i --depth=10;
