@@ -39,7 +39,6 @@ install:
   # list the downloaded modules
   - echo "Modules Available:"
   - ls $HOME/r2d2/modules
-  - echo ""
 
   # update the submodules with a depth of 50 to limit the size a bit
   - cd $HOME/r2d2
